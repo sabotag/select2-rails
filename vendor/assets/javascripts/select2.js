@@ -1385,7 +1385,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 container = this.container,
                 offset = container.offset(),
                 height = container.outerHeight(false),
-                width = container.outerWidth(false),
+                width = container[0].getBoundingClientRect().width,
                 dropHeight = $dropdown.outerHeight(false),
                 $window = $(window),
                 windowWidth = $window.width(),
@@ -1401,7 +1401,7 @@ the specific language governing permissions and limitations under the Apache Lic
                     return dropLeft + dropWidth <= viewPortRight;
                 },
                 enoughRoomOnLeft = function() {
-                    return offset.left + viewPortRight + container.outerWidth(false)  > dropWidth;
+                    return offset.left + viewPortRight + container[0].getBoundingClientRect().width  > dropWidth;
                 },
                 aboveNow = $dropdown.hasClass("select2-drop-above"),
                 bodyOffset,
@@ -1430,7 +1430,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 $dropdown.hide();
                 offset = this.container.offset();
                 height = this.container.outerHeight(false);
-                width = this.container.outerWidth(false);
+                width = this.container[0].getBoundingClientRect().width;
                 dropHeight = $dropdown.outerHeight(false);
                 viewPortRight = $window.scrollLeft() + windowWidth;
                 viewportBottom = $window.scrollTop() + windowHeight;
@@ -1467,7 +1467,7 @@ the specific language governing permissions and limitations under the Apache Lic
             }
 
             if (!enoughRoomOnRight() && enoughRoomOnLeft()) {
-                dropLeft = offset.left + this.container.outerWidth(false) - dropWidth;
+                dropLeft = offset.left + this.container[0].getBoundingClientRect().width - dropWidth;
             }
 
             css =  {
